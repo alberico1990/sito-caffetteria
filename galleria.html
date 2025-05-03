@@ -73,6 +73,18 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     }
 
+    .video-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -103,6 +115,7 @@
 
   <main>
     <section class="gallery">
+      <h2>🖼️ Foto</h2>
       <img src="images/a1.jpg" alt="">
       <img src="images/a2.jpg" alt="">
       <img src="images/a4.jpeg" alt="">
@@ -111,6 +124,14 @@
       <img src="images/a7.jpeg" alt="">
       <img src="images/a8.jpeg" alt="">
       <img src="images/a3.jpg" alt="">
+    </section>
+
+    <section class="video-section">
+      <h2>🎥 Video</h2>
+      <video controls>
+        <source src="video/boss.mp4" type="video/mp4">
+        Il tuo browser non supporta il tag video.
+      </video>
     </section>
   </main>
 
