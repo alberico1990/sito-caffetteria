@@ -30,7 +30,11 @@
       margin-bottom: 10px;
     }
 
-    /* Banner extra */
+    header p {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+
     .banner-extra {
       text-align: center;
       font-size: 1.8em;
@@ -67,7 +71,7 @@
     section {
       padding: 40px 20px;
       max-width: 1000px;
-      margin: auto;
+      margin: 40px auto;
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -84,18 +88,19 @@
     }
 
     #menu li {
-      font-size: 1.2em;
-      padding: 10px;
+      font-size: 1.3em;
+      padding: 12px;
       border-bottom: 1px solid #ccc;
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out, background-color 0.3s;
+      cursor: pointer;
     }
 
     #menu li:hover {
       font-weight: bold;
-      transform: scale(1.05);
+      transform: scale(1.1);
+      background-color: #f8efe4;
     }
 
-    /* Gioco interattivo */
     .game {
       text-align: center;
       margin-top: 40px;
@@ -114,11 +119,27 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      margin: 10px;
       transition: background 0.3s ease-in-out;
     }
 
     .game button:hover {
       background: #8b5e3c;
+    }
+
+    .game #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    #contatti a {
+      color: #a47148;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #contatti a:hover {
+      text-decoration: underline;
     }
 
     footer {
@@ -192,29 +213,36 @@
     </ul>
   </section>
 
-  <!-- Gioco -->
   <section id="game" class="game">
     <h2>🎮 Indovina il Caffè!</h2>
-    <p>Quale caffè ha più caffeina?</p>
+    <p>Quale caffè ha più caffeina totale?</p>
     <button onclick="checkAnswer('espresso')">☕ Espresso</button>
     <button onclick="checkAnswer('americano')">☕ Americano</button>
     <p id="result"></p>
   </section>
 
-  <script>
-    function checkAnswer(answer) {
-      let result = document.getElementById('result');
-      if (answer === 'espresso') {
-        result.innerHTML = "✅ Esatto! L'espresso ha più caffeina!";
-      } else {
-        result.innerHTML = "❌ No, prova di nuovo!";
-      }
-    }
-  </script>
+  <section id="contatti">
+    <h2>📞 Contatti</h2>
+    <p>📍 <strong>Indirizzo:</strong> Via Marconi 26, Castellammare di Stabia (NA)</p>
+    <p>📧 <strong>Email:</strong> <a href="mailto:albericodap@gmail.com">albericodap@gmail.com</a></p>
+    <p>📱 <strong>Facebook:</strong> <a href="https://facebook.com/lamiacaffetteria" target="_blank">La Mia Caffetteria</a></p>
+  </section>
 
   <footer>
     <p>&copy; 2025 La mia caffetteria</p>
+    <a href="https://facebook.com/lamiacaffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
   </footer>
+
+  <script>
+    function checkAnswer(answer) {
+      const result = document.getElementById('result');
+      if (answer === 'americano') {
+        result.innerHTML = "✅ Esatto! L'americano ha più caffeina totale per volume!";
+      } else {
+        result.innerHTML = "❌ No, l'espresso è più concentrato ma contiene meno caffeina totale.";
+      }
+    }
+  </script>
 
 </body>
 </html>
