@@ -140,6 +140,27 @@
       color: #cc9966;
     }
 
+    /* Tasti social e contatti */
+    .social-buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-buttons a {
+      display: inline-block;
+      background-color: #a47148;
+      color: white;
+      padding: 15px;
+      margin: 5px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      transition: background-color 0.3s;
+    }
+
+    .social-buttons a:hover {
+      background-color: #8b5e3c;
+    }
+
     /* Animazioni */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -293,22 +314,21 @@
     <p><strong>Indirizzo:</strong> Via Marconi 26, Castellammare di Stabia (NA)</p>
     <p><strong>Email:</strong> <a href="mailto:albericodap@gmail.com">albericodap@gmail.com</a></p>
     <p><strong>Telefono:</strong> <a href="tel:+393478748435">+39 347 8748435</a></p>
-    <p><strong>Social:</strong> 
+
+    <div class="social-buttons">
       <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank">
-        <i class="fab fa-facebook-f"></i> Facebook
-      </a> | 
+        <i class="fab fa-facebook-f"></i>
+      </a>
       <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
+        <i class="fab fa-instagram"></i>
       </a>
-    </p>
-    <p>
-      <a href="tel:+393512349482" class="btn-call">
-        <i class="fa fa-phone"></i> Chiama Subito
-      </a> | 
-      <a href="https://wa.me/393512349482" target="_blank" class="btn-whatsapp">
-        <i class="fab fa-whatsapp"></i> WhatsApp
+      <a href="https://wa.me/393512349482" target="_blank">
+        <i class="fab fa-whatsapp"></i>
       </a>
-    </p>
+      <a href="tel:+393512349482">
+        <i class="fa fa-phone"></i>
+      </a>
+    </div>
   </section>
 
   <footer>
