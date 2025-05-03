@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galleria - La mia caffetteria</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #faf5f0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #a47148, #d2a679);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .back-button {
+      margin-top: 10px;
+    }
+
+    .back-button a {
+      text-decoration: none;
+      background-color: white;
+      color: #a47148;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: 2px solid #a47148;
+      transition: all 0.3s;
+    }
+
+    .back-button a:hover {
+      background-color: #a47148;
+      color: white;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.4em;
+    }
+
+    footer a:hover {
+      color: #cc9966;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📸 La nostra galleria</h1>
+    <div class="back-button">
+      <a href="index.html"><i class="fas fa-arrow-left"></i> Torna alla home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <img src="https://source.unsplash.com/600x400/?coffee-bar" alt="Interno bar">
+      <img src="https://source.unsplash.com/600x400/?espresso" alt="Caffè espresso">
+      <img src="https://source.unsplash.com/600x400/?latte-art" alt="Latte art">
+      <img src="https://source.unsplash.com/600x400/?cappuccino" alt="Cappuccino">
+      <img src="https://source.unsplash.com/600x400/?croissant" alt="Cornetto">
+      <img src="https://source.unsplash.com/600x400/?barista" alt="Barista al lavoro">
+      <img src="https://source.unsplash.com/600x400/?coffee-shop-table" alt="Tavolini del bar">
+      <img src="https://source.unsplash.com/600x400/?coffee-breakfast" alt="Colazione al bar">
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Seguici sui social:
+      <a href="https://facebook.com/lamia.caffetteria" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://instagram.com/la_mia_caffetteria_alberico" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </p>
+    <p>&copy; 2025 La mia caffetteria</p>
+  </footer>
+
+</body>
+</html>
