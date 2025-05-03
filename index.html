@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Mia Caffetteria - Home</title>
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
@@ -161,7 +161,7 @@
 
   <header>
     <h1>Scopri l'amore di una vera caffetteria di qualità</h1>
-    <p>Lascia un aroma, mille emozioni</p>
+    <p>Un arome... mille emozioni!</p>
   </header>
 
   <div class="banner-extra">
@@ -185,7 +185,7 @@
       <li><strong>Caffè macchiato</strong> - €1.50</li>
     </ul>
 
-    <h3>🥐 Cornetti</h3>
+    <h3>🥐 Pasticceria</h3>
     <ul>
       <li><strong>Cornetto vuoto</strong> - €1.20</li>
       <li><strong>Cornetto farcito</strong> - €1.50</li>
@@ -202,39 +202,96 @@
   <!-- Gioco -->
   <section id="game" class="game">
     <h2>🎮 Indovina il Caffè!</h2>
-    <p>Quale caffè ha più caffeina?</p>
-    <button onclick="checkAnswer('espresso')">☕ Espresso</button>
-    <button onclick="checkAnswer('americano')">☕ Americano</button>
+    <p>Qual è la risposta corretta?</p>
+    <button onclick="askQuestion()">Inizia il Gioco</button>
     <p id="result"></p>
   </section>
 
   <script>
-    function checkAnswer(answer) {
-      let result = document.getElementById('result');
-      if (answer === 'espresso') {
-        result.innerHTML = "✅ Esatto! L'espresso ha più caffeina!";
-      } else {
-        result.innerHTML = "❌ No, prova di nuovo!";
+    const questions = [
+      {
+        question: "Quale caffè ha più caffeina?",
+        options: ["Espresso", "Americano"],
+        answer: "Espresso"
+      },
+      {
+        question: "Qual è il caffè che si prepara con il latte montato?",
+        options: ["Cappuccino", "Espresso"],
+        answer: "Cappuccino"
+      },
+      {
+        question: "Cosa significa 'macchiato' in un caffè macchiato?",
+        options: ["Con latte", "Con zucchero"],
+        answer: "Con latte"
+      },
+      {
+        question: "Qual è il caffè più forte tra Espresso e Lungo?",
+        options: ["Espresso", "Lungo"],
+        answer: "Espresso"
+      },
+      {
+        question: "Che tipo di caffè è l'americano?",
+        options: ["Caffè diluito con acqua", "Caffè con panna"],
+        answer: "Caffè diluito con acqua"
+      },
+      {
+        question: "Quante varietà di caffè sono principali?",
+        options: ["2", "3"],
+        answer: "2"
+      },
+      {
+        question: "Il caffè moka prende il nome da un tipo di caffè originario di quale paese?",
+        options: ["Yemen", "Etiopia"],
+        answer: "Yemen"
+      },
+      {
+        question: "Cos'è il caffè decaffeinato?",
+        options: ["Un caffè senza caffeina", "Un caffè più forte"],
+        answer: "Un caffè senza caffeina"
+      },
+      {
+        question: "Quale caffè è servito con una quantità di latte maggiore?",
+        options: ["Cappuccino", "Macchiato"],
+        answer: "Cappuccino"
+      },
+      {
+        question: "Il caffè è originario di quale continente?",
+        options: ["Asia", "Africa"],
+        answer: "Africa"
       }
+    ];
+
+    let currentQuestion = 0;
+
+    function askQuestion() {
+      if (currentQuestion < questions.length) {
+        const question = questions[currentQuestion];
+        let optionsHtml = "";
+        question.options.forEach(option => {
+          optionsHtml += `<button onclick="checkAnswer('${option}', '${question.answer}')">${option}</button><br>`;
+        });
+        document.getElementById("result").innerHTML = `<p>${question.question}</p>${optionsHtml}`;
+        currentQuestion++;
+      } else {
+        document.getElementById("result").innerHTML = "<p>Hai completato il gioco! Complimenti!</p>";
+      }
+    }
+
+    function checkAnswer(selected, correct) {
+      let result = document.getElementById("result");
+      if (selected === correct) {
+        result.innerHTML = "✅ Risposta corretta!";
+      } else {
+        result.innerHTML = "❌ Risposta errata. Riprova!";
+      }
+      setTimeout(() => askQuestion(), 1500);  // Inizia la prossima domanda dopo 1,5 secondi
     }
   </script>
 
-  <!-- Sezione Contatti -->
-  <section id="contatti">
-    <h2>📞 Contatti</h2>
-    <p><strong>📍 Indirizzo:</strong> Via Marconi 26, Castellammare di Stabia (NA)</p>
-    <p><strong>📧 Email:</strong> <a href="mailto:albericodap@gmail.com">albericodap@gmail.com</a></p>
-    <p><strong>🕒 Orari di apertura:</strong> Lun-Dom: 7:00 - 20:00</p>
-    <p><strong>📱 Seguici su Facebook:</strong> <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank">la mia caffetteria</a></p>
-    <p><strong>📸 Seguici su Instagram:</strong> <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank">la mia caffetteria</a></p>
-  </section>
-
   <footer>
     <p>&copy; 2025 La mia caffetteria</p>
-    <p>Seguici su 
-      <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank"><i class="fab fa-instagram"></i></a>
-    </p>
+    <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank"><i class="fab fa-instagram"></i></a>
   </footer>
 
 </body>
