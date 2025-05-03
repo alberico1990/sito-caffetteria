@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Mia Caffetteria - Home</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     body {
@@ -28,11 +26,6 @@
     header h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin-top: 0;
     }
 
     .banner-extra {
@@ -71,7 +64,7 @@
     section {
       padding: 40px 20px;
       max-width: 1000px;
-      margin: 40px auto;
+      margin: auto;
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -88,17 +81,15 @@
     }
 
     #menu li {
-      font-size: 1.3em;
-      padding: 12px;
+      font-size: 1.2em;
+      padding: 10px;
       border-bottom: 1px solid #ccc;
-      transition: transform 0.3s ease-in-out, background-color 0.3s;
-      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
     }
 
     #menu li:hover {
       font-weight: bold;
-      transform: scale(1.1);
-      background-color: #f8efe4;
+      transform: scale(1.05);
     }
 
     .game {
@@ -127,21 +118,6 @@
       background: #8b5e3c;
     }
 
-    .game #result {
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-
-    #contatti a {
-      color: #a47148;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    #contatti a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -161,7 +137,6 @@
       color: #cc9966;
     }
 
-    /* Animazioni */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -182,7 +157,7 @@
 
   <header>
     <h1>Scopri l'amore di una vera caffetteria di qualità</h1>
-    <p>Un aroma... mille emozioni...</p>
+    <p>Lascia un aroma, mille emozioni</p>
   </header>
 
   <div class="banner-extra">
@@ -206,43 +181,122 @@
       <li><strong>Caffè macchiato</strong> - €1.50</li>
     </ul>
 
+    <h3>🥐 Cornetteria</h3>
+    <ul>
+      <li><strong>Cornetto vuoto</strong> - €1.20</li>
+      <li><strong>Cornetto farcito</strong> - €1.50</li>
+    </ul>
+
     <h3>🥤 Bevande Fresche</h3>
     <ul>
       <li><strong>Acqua naturale / frizzante</strong> - €1.50</li>
       <li><strong>Succhi di frutta</strong> - €2.50</li>
+      <li><strong>Bibite gasate</strong> - €1.50</li>
     </ul>
   </section>
 
   <section id="game" class="game">
-    <h2>🎮 Indovina il Caffè!</h2>
-    <p>Quale caffè ha più caffeina totale?</p>
-    <button onclick="checkAnswer('espresso')">☕ Espresso</button>
-    <button onclick="checkAnswer('americano')">☕ Americano</button>
-    <p id="result"></p>
+    <h2>🎮 Quiz sul Caffè!</h2>
+    <p id="question">Clicca sul bottone per iniziare il quiz!</p>
+    <div id="answers"></div>
+    <button onclick="newQuestion()">🎲 Nuova Domanda</button>
+    <p id="feedback"></p>
   </section>
 
-  <section id="contatti">
-    <h2>📞 Contatti</h2>
-    <p>📍 <strong>Indirizzo:</strong> Via Marconi 26, Castellammare di Stabia (NA)</p>
-    <p>📧 <strong>Email:</strong> <a href="mailto:albericodap@gmail.com">albericodap@gmail.com</a></p>
-    <p>📱 <strong>Facebook:</strong> <a href="https://facebook.com/lamiacaffetteria" target="_blank">La Mia Caffetteria</a></p>
-  </section>
+  <script>
+    const quiz = [
+      {
+        question: "Da quale paese proviene originariamente il caffè?",
+        answers: ["Brasile", "Etiopia", "India", "Vietnam"],
+        correct: "Etiopia"
+      },
+      {
+        question: "Quale tipo di caffè contiene più caffeina?",
+        answers: ["Espresso", "Americano", "Caffè filtro", "Decaffeinato"],
+        correct: "Caffè filtro"
+      },
+      {
+        question: "Quanti chicchi di caffè servono in media per una tazzina?",
+        answers: ["50", "80", "100", "40"],
+        correct: "50"
+      },
+      {
+        question: "Cosa significa 'Arabica' nel mondo del caffè?",
+        answers: [
+          "Una miscela aromatica",
+          "Una varietà di pianta",
+          "Una tecnica di tostatura",
+          "Una caffettiera tradizionale"
+        ],
+        correct: "Una varietà di pianta"
+      },
+      {
+        question: "Dove si trova la maggiore produzione mondiale di caffè?",
+        answers: ["Colombia", "Etiopia", "Brasile", "Indonesia"],
+        correct: "Brasile"
+      },
+      {
+        question: "Come si chiama il processo per rimuovere la caffeina?",
+        answers: ["Distillazione", "Decaffeinizzazione", "Fermentazione", "Filtraggio"],
+        correct: "Decaffeinizzazione"
+      },
+      {
+        question: "Che cos'è un 'ristretto'?",
+        answers: [
+          "Un caffè con panna",
+          "Un caffè lungo",
+          "Un espresso più concentrato",
+          "Un cappuccino freddo"
+        ],
+        correct: "Un espresso più concentrato"
+      },
+      {
+        question: "Il caffè espresso si prepara con quale pressione ideale?",
+        answers: ["3 bar", "6 bar", "9 bar", "12 bar"],
+        correct: "9 bar"
+      },
+      {
+        question: "Come si chiama la bevanda di caffè e latte tipica italiana?",
+        answers: ["Cortado", "Latte Macchiato", "Cappuccino", "Flat White"],
+        correct: "Cappuccino"
+      },
+      {
+        question: "Il caffè verde è...",
+        answers: [
+          "Una varietà di caffè",
+          "Caffè non tostato",
+          "Caffè con menta",
+          "Caffè con latte vegetale"
+        ],
+        correct: "Caffè non tostato"
+      }
+    ];
+
+    function newQuestion() {
+      const q = quiz[Math.floor(Math.random() * quiz.length)];
+      document.getElementById('question').textContent = q.question;
+      const answersDiv = document.getElementById('answers');
+      answersDiv.innerHTML = '';
+      q.answers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.textContent = ans;
+        btn.onclick = () => {
+          document.getElementById('feedback').textContent = ans === q.correct
+            ? "✅ Corretto!"
+            : `❌ Sbagliato! La risposta giusta è "${q.correct}".`;
+        };
+        answersDiv.appendChild(btn);
+      });
+      document.getElementById('feedback').textContent = '';
+    }
+  </script>
 
   <footer>
     <p>&copy; 2025 La mia caffetteria</p>
-    <a href="https://facebook.com/lamiacaffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
+    <p>Seguici su 
+      <a href="https://www.facebook.com/lamiacaffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
+    </p>
   </footer>
-
-  <script>
-    function checkAnswer(answer) {
-      const result = document.getElementById('result');
-      if (answer === 'americano') {
-        result.innerHTML = "✅ Esatto! L'americano ha più caffeina totale per volume!";
-      } else {
-        result.innerHTML = "❌ No, l'espresso è più concentrato ma contiene meno caffeina totale.";
-      }
-    }
-  </script>
 
 </body>
 </html>
