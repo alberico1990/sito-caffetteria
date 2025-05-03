@@ -2,9 +2,11 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>La Mia Caffetteria - Home</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     body {
@@ -28,6 +30,7 @@
       margin-bottom: 10px;
     }
 
+    /* Banner extra */
     .banner-extra {
       text-align: center;
       font-size: 1.8em;
@@ -92,6 +95,7 @@
       transform: scale(1.05);
     }
 
+    /* Gioco interattivo */
     .game {
       text-align: center;
       margin-top: 40px;
@@ -110,7 +114,6 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin: 10px;
       transition: background 0.3s ease-in-out;
     }
 
@@ -137,6 +140,7 @@
       color: #cc9966;
     }
 
+    /* Animazioni */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -181,7 +185,7 @@
       <li><strong>Caffè macchiato</strong> - €1.50</li>
     </ul>
 
-    <h3>🥐 Cornetteria</h3>
+    <h3>🥐 Cornetti</h3>
     <ul>
       <li><strong>Cornetto vuoto</strong> - €1.20</li>
       <li><strong>Cornetto farcito</strong> - €1.50</li>
@@ -189,112 +193,47 @@
 
     <h3>🥤 Bevande Fresche</h3>
     <ul>
-      <li><strong>Acqua naturale / frizzante</strong> - €1.00</li>
+      <li><strong>Acqua naturale / frizzante</strong> - €1.50</li>
       <li><strong>Succhi di frutta</strong> - €2.50</li>
       <li><strong>Bibite gasate</strong> - €1.50</li>
     </ul>
   </section>
 
+  <!-- Gioco -->
   <section id="game" class="game">
-    <h2>🎮 Quiz sul Caffè!</h2>
-    <p id="question">Clicca sul bottone per iniziare il quiz!</p>
-    <div id="answers"></div>
-    <button onclick="newQuestion()">🎲 Nuova Domanda</button>
-    <p id="feedback"></p>
+    <h2>🎮 Indovina il Caffè!</h2>
+    <p>Quale caffè ha più caffeina?</p>
+    <button onclick="checkAnswer('espresso')">☕ Espresso</button>
+    <button onclick="checkAnswer('americano')">☕ Americano</button>
+    <p id="result"></p>
   </section>
 
   <script>
-    const quiz = [
-      {
-        question: "Da quale paese proviene originariamente il caffè?",
-        answers: ["Brasile", "Etiopia", "India", "Vietnam"],
-        correct: "Etiopia"
-      },
-      {
-        question: "Quale tipo di caffè contiene più caffeina?",
-        answers: ["Espresso", "Americano", "Caffè filtro", "Decaffeinato"],
-        correct: "Caffè filtro"
-      },
-      {
-        question: "Quanti chicchi di caffè servono in media per una tazzina?",
-        answers: ["50", "80", "100", "40"],
-        correct: "50"
-      },
-      {
-        question: "Cosa significa 'Arabica' nel mondo del caffè?",
-        answers: [
-          "Una miscela aromatica",
-          "Una varietà di pianta",
-          "Una tecnica di tostatura",
-          "Una caffettiera tradizionale"
-        ],
-        correct: "Una varietà di pianta"
-      },
-      {
-        question: "Dove si trova la maggiore produzione mondiale di caffè?",
-        answers: ["Colombia", "Etiopia", "Brasile", "Indonesia"],
-        correct: "Brasile"
-      },
-      {
-        question: "Come si chiama il processo per rimuovere la caffeina?",
-        answers: ["Distillazione", "Decaffeinizzazione", "Fermentazione", "Filtraggio"],
-        correct: "Decaffeinizzazione"
-      },
-      {
-        question: "Che cos'è un 'ristretto'?",
-        answers: [
-          "Un caffè con panna",
-          "Un caffè lungo",
-          "Un espresso più concentrato",
-          "Un cappuccino freddo"
-        ],
-        correct: "Un espresso più concentrato"
-      },
-      {
-        question: "Il caffè espresso si prepara con quale pressione ideale?",
-        answers: ["3 bar", "6 bar", "9 bar", "12 bar"],
-        correct: "9 bar"
-      },
-      {
-        question: "Come si chiama la bevanda di caffè e latte tipica italiana?",
-        answers: ["Cortado", "Latte Macchiato", "Cappuccino", "Flat White"],
-        correct: "Cappuccino"
-      },
-      {
-        question: "Il caffè verde è...",
-        answers: [
-          "Una varietà di caffè",
-          "Caffè non tostato",
-          "Caffè con menta",
-          "Caffè con latte vegetale"
-        ],
-        correct: "Caffè non tostato"
+    function checkAnswer(answer) {
+      let result = document.getElementById('result');
+      if (answer === 'espresso') {
+        result.innerHTML = "✅ Esatto! L'espresso ha più caffeina!";
+      } else {
+        result.innerHTML = "❌ No, prova di nuovo!";
       }
-    ];
-
-    function newQuestion() {
-      const q = quiz[Math.floor(Math.random() * quiz.length)];
-      document.getElementById('question').textContent = q.question;
-      const answersDiv = document.getElementById('answers');
-      answersDiv.innerHTML = '';
-      q.answers.forEach(ans => {
-        const btn = document.createElement('button');
-        btn.textContent = ans;
-        btn.onclick = () => {
-          document.getElementById('feedback').textContent = ans === q.correct
-            ? "✅ Corretto!"
-            : `❌ Sbagliato! La risposta giusta è "${q.correct}".`;
-        };
-        answersDiv.appendChild(btn);
-      });
-      document.getElementById('feedback').textContent = '';
     }
   </script>
+
+  <!-- Sezione Contatti -->
+  <section id="contatti">
+    <h2>📞 Contatti</h2>
+    <p><strong>📍 Indirizzo:</strong> Via Marconi 26, Castellammare di Stabia (NA)</p>
+    <p><strong>📧 Email:</strong> <a href="mailto:albericodap@gmail.com">albericodap@gmail.com</a></p>
+    <p><strong>🕒 Orari di apertura:</strong> Lun-Dom: 7:00 - 20:00</p>
+    <p><strong>📱 Seguici su Facebook:</strong> <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank">la mia caffetteria</a></p>
+    <p><strong>📸 Seguici su Instagram:</strong> <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank">la mia caffetteria</a></p>
+  </section>
 
   <footer>
     <p>&copy; 2025 La mia caffetteria</p>
     <p>Seguici su 
-      <a href="https://www.facebook.com/lamiacaffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.facebook.com/search/top?q=la%20mia%20caffetteria" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/la_mia_caffetteria_alberico/" target="_blank"><i class="fab fa-instagram"></i></a>
     </p>
   </footer>
 
